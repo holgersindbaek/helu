@@ -1,3 +1,9 @@
+require 'sugarcube'
+require 'sugarcube-attributedstring'
+require 'sugarcube-anonymous'
+require 'bubble-wrap/core'
+require 'bubble-wrap/reactor'
+
 unless defined?(Motion::Project::Config)
   raise "This file must be required within a RubyMotion project Rakefile."
 end
