@@ -16,25 +16,45 @@ Or install it yourself as:
 
 ## USAGE
 
-Start a helu with the In App Purchase ID:
+#### Initialize.
 
-    @helu = Helu.new("loosing_weight_10")
+Start a helu with the In App Purchase ID. Helu will check if the product exists and return the success:
 
+    @loose_weight = Helu.new("loosing_weight_10") { |result| puts result[:success] }
 
-#### create blocks for failing and buying: 
+You can also get more info on the product:
 
-    @helu.fail = lambda { |transaction| puts transaction ; # node here for failed in app purchase }
-    @helu.winning = lambda { |transaction| puts transaction ; # code here for successful in app purchase }
+	@loose_weight = Helu.new("loosing_weight_10") do |result| 
+		if result[:success]
+			puts result[:response]
+		else
+			puts result[:error]
+		end
+	end
 
+#### Get products (localized) price, title and description.
 
-The transaction object on the lambda is the one we get from Apple; Therefore, it is a SKPaymentTransaction. [More information about it here](http://developer.apple.com/library/ios/#documentation/StoreKit/Reference/SKPaymentTransaction_Class/Reference/Reference.html)
+After you've made sure your product exists, you can now get it's price, title and description:
 
+	@loose_weight.price
+	@loose_weight.title
+	@loose_weight.description
 
+#### Purchase product.
 
-####  buy the product: 
+To purchase a product do:
 
-    @helu.buy
+	@loose_weight.purchase { |result| puts result[:success] }
 
+And if you want some more info
+
+	@loose_weight.purchase do |result|
+		if result[:success]
+			puts result[:transaction]
+		else
+			puts result[:transaction]
+		end
+	end
 
 ## Example App: 
 

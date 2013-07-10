@@ -1,9 +1,9 @@
 # -*- encoding: utf-8 -*-
-VERSION = "0.3"
+HELU_VERSION = "0.3"
 
 Gem::Specification.new do |spec|
   spec.name          = "helu"
-  spec.version       = VERSION
+  spec.version       = HELU_VERSION
   spec.authors       = ["Ivan Acosta-Rubio"]
   spec.email         = ["ivan@bakedweb.net"]
   spec.description   = %q{RubyMotion :: StoreKit Wrapper :: Allows In App Purchases }
@@ -11,6 +11,9 @@ Gem::Specification.new do |spec|
   spec.homepage      = "http://www.ivanacostarubio.com"
   spec.license       = "MIT"
 
+  spec.add_dependency "bubble-wrap"
+  spec.add_dependency "sugarcube"
+  
   files = []
   files << 'README.md'
   files.concat(Dir.glob('lib/**/*.rb'))
