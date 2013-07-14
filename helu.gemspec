@@ -11,8 +11,8 @@ Gem::Specification.new do |spec|
   spec.homepage      = "http://www.ivanacostarubio.com"
   spec.license       = "MIT"
 
-  spec.add_dependency "bubble-wrap"
   spec.add_dependency "sugarcube"
+  spec.add_dependency "bubble-wrap"
   
   files = []
   files << 'README.md'

@@ -1,9 +1,10 @@
 class Helu
   
-  attr_reader :product_id, :purchase, :product
+  attr_reader :product_id, :shared_secret, :purchase, :product
 
-  def initialize(product_id, &result)
+  def initialize(product_id, shared_secret = nil, &result)
     @product_id = product_id
+    @shared_secret = shared_secret
   end
 
 # Call product to get product
@@ -34,10 +35,26 @@ class Helu
     App::Persistence["#{@product_id}.localizedDescription"] || "Description is not ready"
   end
 
+  def is_subscription_active?
+    receipt_data = App::Persistence["#{@product_id}.receipt_data"]
+
+    # DISPLAYING receipt data
+    ap "receipt_data: #{receipt_data}"
+    return false if receipt_data.blank?
+
+
+    receipt_object = BW::JSON.parse(receipt_data).to_object
+    expires_date = receipt_object.receipt.expires_date.to_i/1000
+
+    return expires_date > NSDate.date.timeIntervalSince1970
+  end
+
+
 # Call purchase to purchase a product
 
   def purchase(&result)
-    @purchase = Purchase.new(@product_id) { |purchase_result| result.call(purchase_result) }
+    @purchase = Purchase.new(@product_id, @shared_secret) { |purchase_result| result.call(purchase_result) }
   end
+
 
 end

@@ -8,7 +8,19 @@ class Product
   end
 
   def productsRequest(request, didReceiveResponse:response) 
-    @result.call({success: true, response: response}.to_object)
+    receipt_data = App::Persistence["#{@product_id}.receipt_data"]
+
+    if receipt_data.blank?
+      @result.call({success: true, response: response}.to_object)
+    else
+      @receipt = Receipt.new(receipt_data, @shared_secret) do |result|
+        if result.success
+          @result.call({success: true, response: response}.to_object)
+        else
+
+        end
+      end
+    end
 
     # Save needed product info
     product = response.products.first
