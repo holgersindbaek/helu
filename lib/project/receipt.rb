@@ -2,6 +2,8 @@ class Receipt
 
   attr_reader :result, :received_data, :request_operation_queue
 
+# Receipt Initializer
+
   def initialize(receipt_data, shared_secret, &result)
     @result = result
     @shared_secret = shared_secret
@@ -9,6 +11,8 @@ class Receipt
 
     check_receipt(receipt_data)
   end
+
+# Receipt methods
 
   def check_receipt(receipt_data)
     # ap "check_receipt(receipt_data): #{receipt_data}"
