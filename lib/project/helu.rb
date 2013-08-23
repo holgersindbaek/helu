@@ -4,9 +4,9 @@ class Helu
 
 # Helu initializer
 
-  def initialize(product_id = "no_id", shared_secret = nil, &result)
+  def initialize(product_id = nil, shared_secret = nil, &result)
     # Set variables
-    @product_id = product_id
+    @product_id = product_id || "no_id"
     @shared_secret = shared_secret
 
     # Initialize product and purchase

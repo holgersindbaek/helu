@@ -3,7 +3,6 @@ class ProductManager
 # Product Initializer
 
   def initialize(product_id, shared_secret)
-    # ap "ProductManager initialize"
     @product_id = product_id
     @shared_secret = shared_secret
   end
