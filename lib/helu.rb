@@ -11,5 +11,4 @@ Motion::Project::App.setup do |app|
 
   app.pods ||= Motion::Project::CocoaPods.new(app)
   app.pods.pod 'CocoaSecurity', '~> 1.2.1'
-  app.pods.pod 'CargoBay', '~> 0.3.3'
 end
