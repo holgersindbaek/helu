@@ -2,8 +2,7 @@ class Helu
   
   attr_reader :product_id, :shared_secret, :product, :purchase, :exists
 
-# Helu initializer
-
+  # Helu initializer
   def initialize(product_id = nil, shared_secret = nil, &result)
     # Set variables
     @product_id = product_id || "no_id"

@@ -23,7 +23,7 @@ class ProductManager
     receipt_data = App::Persistence["#{@product_id}.receipt_data"]
     # ap "update_receipt 2"
     @receipt = Receipt.new(receipt_data, @shared_secret) do |response|
-      ap "update_receipt succeeded: #{response.object}"
+      # ap "update_receipt succeeded: #{response.object}"
       # ap "update_receipt 3"
       App::Persistence["#{@product_id}.receipt"] = response.object if response.success
       # ap "update_receipt 4"
@@ -81,7 +81,7 @@ class ProductManager
     purchase_info_plist = NSPropertyListSerialization.propertyListWithData(purchase_info_data, options:NSPropertyListImmutable, format:nil, error:nil)
 
     expires_date = purchase_info_plist.objectForKey("expires-date")
-    ap "expires_date: #{expires_date}"
+    # ap "expires_date: #{expires_date}"
     expires_calc = expires_date.to_i/1000
 
     return expires_calc > NSDate.date.timeIntervalSince1970

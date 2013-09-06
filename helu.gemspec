@@ -10,9 +10,6 @@ Gem::Specification.new do |spec|
   spec.summary       = %q{RubyMotion StoreKit Wrapper}
   spec.homepage      = "http://www.ivanacostarubio.com"
   spec.license       = "MIT"
-
-  spec.add_dependency "sugarcube"
-  spec.add_dependency "bubble-wrap"
   
   files = []
   files << 'README.md'
@@ -23,4 +20,6 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["lib"]
 
   spec.add_development_dependency "rake"
+  spec.add_dependency "sugarcube"
+  spec.add_dependency "bubble-wrap"
 end
